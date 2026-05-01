@@ -1,0 +1,295 @@
+openapi: 3.0.3
+info:
+  title: API de Clientes
+  description: |
+    API REST para consultar información de clientes usando My JSON Server.
+    
+    Esta API permite validar si un cliente está registrado mediante su DNI y obtener su información completa.
+    
+    **Características:**
+    - Consulta de clientes por DNI
+    - Búsqueda por nombre, apellido, email
+    - Filtrado y paginación
+    - Solo operaciones de lectura (GET)
+    
+    **Repositorio:** [github.com/aarombrenner/apis_estaticas](https://github.com/aarombrenner/apis_estaticas)
+  version: 1.0.0
+  contact:
+    name: API Support
+    url: https://github.com/aarombrenner/apis_estaticas
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: https://my-json-server.typicode.com/aarombrenner/apis_estaticas
+    description: Servidor de producción (My JSON Server)
+
+tags:
+  - name: Clientes
+    description: Operaciones relacionadas con clientes
+
+paths:
+  /clientes:
+    get:
+      tags:
+        - Clientes
+      summary: Obtener lista de clientes
+      description: |
+        Retorna una lista de todos los clientes registrados.
+        
+        Soporta filtrado por cualquier campo, paginación y ordenamiento.
+      operationId: getClientes
+      parameters:
+        - name: dni
+          in: query
+          description: Filtrar por DNI del cliente
+          required: false
+          schema:
+            type: string
+            pattern: '^\d{8}$'
+            example: "12345678"
+        - name: nombre
+          in: query
+          description: Filtrar por nombre del cliente
+          required: false
+          schema:
+            type: string
+            example: "Juan"
+        - name: apellido
+          in: query
+          description: Filtrar por apellido del cliente
+          required: false
+          schema:
+            type: string
+            example: "Pérez"
+        - name: email
+          in: query
+          description: Filtrar por email del cliente
+          required: false
+          schema:
+            type: string
+            format: email
+            example: "juan.perez@example.com"
+        - name: _limit
+          in: query
+          description: Limitar número de resultados
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 10
+            example: 10
+        - name: _page
+          in: query
+          description: Número de página (usado con _limit)
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+            example: 1
+        - name: _sort
+          in: query
+          description: Campo por el cual ordenar
+          required: false
+          schema:
+            type: string
+            enum: [id, dni, nombre, apellido, email]
+            example: "nombre"
+        - name: _order
+          in: query
+          description: Orden ascendente o descendente
+          required: false
+          schema:
+            type: string
+            enum: [asc, desc]
+            default: asc
+            example: "asc"
+        - name: q
+          in: query
+          description: Búsqueda de texto completo en todos los campos
+          required: false
+          schema:
+            type: string
+            example: "juan"
+      responses:
+        '200':
+          description: Lista de clientes obtenida exitosamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cliente'
+              examples:
+                todosLosClientes:
+                  summary: Todos los clientes
+                  value:
+                    - id: 1
+                      dni: "12345678"
+                      nombre: "Juan"
+                      apellido: "Pérez García"
+                      email: "juan.perez@example.com"
+                      celular: "987654321"
+                      direccion: "Av. Arequipa 1234, Lima"
+                    - id: 2
+                      dni: "87654321"
+                      nombre: "María"
+                      apellido: "López Torres"
+                      email: "maria.lopez@example.com"
+                      celular: "912345678"
+                      direccion: "Jr. Cusco 567, Lima"
+                clientePorDNI:
+                  summary: Cliente encontrado por DNI
+                  value:
+                    - id: 1
+                      dni: "12345678"
+                      nombre: "Juan"
+                      apellido: "Pérez García"
+                      email: "juan.perez@example.com"
+                      celular: "987654321"
+                      direccion: "Av. Arequipa 1234, Lima"
+                clienteNoEncontrado:
+                  summary: Cliente no encontrado
+                  value: []
+        '400':
+          description: Parámetros de consulta inválidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /clientes/{id}:
+    get:
+      tags:
+        - Clientes
+      summary: Obtener cliente por ID
+      description: Retorna la información de un cliente específico mediante su ID
+      operationId: getClienteById
+      parameters:
+        - name: id
+          in: path
+          description: ID único del cliente
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+            example: 1
+      responses:
+        '200':
+          description: Cliente encontrado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cliente'
+              example:
+                id: 1
+                dni: "12345678"
+                nombre: "Juan"
+                apellido: "Pérez García"
+                email: "juan.perez@example.com"
+                celular: "987654321"
+                direccion: "Av. Arequipa 1234, Lima"
+        '404':
+          description: Cliente no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "Cliente no encontrado"
+                message: "No existe un cliente con el ID especificado"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    Cliente:
+      type: object
+      required:
+        - id
+        - dni
+        - nombre
+        - apellido
+        - email
+        - celular
+        - direccion
+      properties:
+        id:
+          type: integer
+          description: Identificador único del cliente
+          example: 1
+        dni:
+          type: string
+          description: Documento Nacional de Identidad (8 dígitos)
+          pattern: '^\d{8}$'
+          minLength: 8
+          maxLength: 8
+          example: "12345678"
+        nombre:
+          type: string
+          description: Nombre del cliente
+          minLength: 1
+          maxLength: 100
+          example: "Juan"
+        apellido:
+          type: string
+          description: Apellido(s) del cliente
+          minLength: 1
+          maxLength: 100
+          example: "Pérez García"
+        email:
+          type: string
+          format: email
+          description: Correo electrónico del cliente
+          example: "juan.perez@example.com"
+        celular:
+          type: string
+          description: Número de celular del cliente (9 dígitos)
+          pattern: '^\d{9}$'
+          minLength: 9
+          maxLength: 9
+          example: "987654321"
+        direccion:
+          type: string
+          description: Dirección completa del cliente
+          minLength: 1
+          maxLength: 200
+          example: "Av. Arequipa 1234, Lima"
+      example:
+        id: 1
+        dni: "12345678"
+        nombre: "Juan"
+        apellido: "Pérez García"
+        email: "juan.perez@example.com"
+        celular: "987654321"
+        direccion: "Av. Arequipa 1234, Lima"
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Tipo de error
+          example: "Bad Request"
+        message:
+          type: string
+          description: Descripción detallada del error
+          example: "El DNI debe tener exactamente 8 dígitos"
+      example:
+        error: "Bad Request"
+        message: "Parámetros de consulta inválidos"
+
+# Made with Bob
