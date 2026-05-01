@@ -1,65 +1,26 @@
-# 📋 Instrucciones para Publicar en GitHub
+# 📋 API de Clientes - Configuración Completa
 
-## Paso 1: Crear el Repositorio en GitHub
+## ✅ Estado: Repositorio Publicado
 
-1. Ve a https://github.com/new
-2. Configura el repositorio:
-   - **Repository name:** `apis_estaticas`
-   - **Description:** API REST falsa para consultar clientes usando My JSON Server
-   - **Visibility:** ✅ **Public** (IMPORTANTE: debe ser público para que My JSON Server funcione)
-   - ❌ **NO** marques "Add a README file"
-   - ❌ **NO** agregues .gitignore
-   - ❌ **NO** agregues licencia
-3. Haz clic en **"Create repository"**
+Tu API ya está publicada y funcionando en:
+- **Usuario GitHub:** aarombrenner
+- **Repositorio:** https://github.com/aarombrenner/apis_estaticas
 
-## Paso 2: Conectar y Subir el Código
+## 🚀 URLs de tu API
 
-Copia y pega estos comandos en tu terminal (reemplaza `TU_USUARIO` con tu nombre de usuario de GitHub):
-
-```bash
-git remote add origin https://github.com/TU_USUARIO/apis_estaticas.git
-git branch -M main
-git push -u origin main
-```
-
-### Ejemplo con usuario "juanperez":
-```bash
-git remote add origin https://github.com/juanperez/apis_estaticas.git
-git branch -M main
-git push -u origin main
-```
-
-## Paso 3: Verificar que Funciona
-
-Después de hacer push, espera 1-2 minutos y prueba tu API:
+Tu API está disponible en las siguientes URLs:
 
 ### Probar en el navegador:
 ```
-https://my-json-server.typicode.com/TU_USUARIO/apis_estaticas/clientes
+https://my-json-server.typicode.com/aarombrenner/apis_estaticas/clientes
 ```
 
 ### Probar búsqueda por DNI:
 ```
-https://my-json-server.typicode.com/TU_USUARIO/apis_estaticas/clientes?dni=12345678
+https://my-json-server.typicode.com/aarombrenner/apis_estaticas/clientes?dni=12345678
 ```
 
-## Paso 4: Actualizar el Archivo HTML
-
-1. Abre el archivo `ejemplo.html`
-2. Busca la línea que dice:
-   ```javascript
-   const API_URL = 'https://my-json-server.typicode.com/TU_USUARIO/apis_estaticas';
-   ```
-3. Reemplaza `TU_USUARIO` con tu nombre de usuario de GitHub
-4. Guarda el archivo
-5. Haz commit y push de los cambios:
-   ```bash
-   git add ejemplo.html
-   git commit -m "Actualizar URL de la API con usuario correcto"
-   git push
-   ```
-
-## Paso 5: Probar la Aplicación
+## 🎯 Probar la Aplicación
 
 Abre el archivo `ejemplo.html` en tu navegador y prueba con estos DNIs:
 
@@ -68,16 +29,14 @@ Abre el archivo `ejemplo.html` en tu navegador y prueba con estos DNIs:
 - ✅ **45678912** - Carlos Rodríguez Sánchez
 - ❌ **99999999** - No existe (para probar el caso de error)
 
-## 🎯 URLs Finales de tu API
-
-Reemplaza `TU_USUARIO` con tu usuario de GitHub:
+## 📊 Endpoints Disponibles
 
 | Endpoint | URL |
 |----------|-----|
-| Todos los clientes | `https://my-json-server.typicode.com/TU_USUARIO/apis_estaticas/clientes` |
-| Cliente por DNI | `https://my-json-server.typicode.com/TU_USUARIO/apis_estaticas/clientes?dni=12345678` |
-| Cliente por ID | `https://my-json-server.typicode.com/TU_USUARIO/apis_estaticas/clientes/1` |
-| Buscar por nombre | `https://my-json-server.typicode.com/TU_USUARIO/apis_estaticas/clientes?nombre=Juan` |
+| Todos los clientes | `https://my-json-server.typicode.com/aarombrenner/apis_estaticas/clientes` |
+| Cliente por DNI | `https://my-json-server.typicode.com/aarombrenner/apis_estaticas/clientes?dni=12345678` |
+| Cliente por ID | `https://my-json-server.typicode.com/aarombrenner/apis_estaticas/clientes/1` |
+| Buscar por nombre | `https://my-json-server.typicode.com/aarombrenner/apis_estaticas/clientes?nombre=Juan` |
 
 ## 🔧 Agregar Nuevos Clientes
 
@@ -109,7 +68,7 @@ Para agregar más clientes:
 ### Error: "remote origin already exists"
 ```bash
 git remote remove origin
-git remote add origin https://github.com/TU_USUARIO/apis_estaticas.git
+git remote add origin https://github.com/aarombrenner/apis_estaticas.git
 ```
 
 ### Error: "Permission denied"
@@ -135,13 +94,26 @@ Asegúrate de estar autenticado en GitHub. Puedes usar:
 - [Documentación JSON Server](https://github.com/typicode/json-server)
 - [GitHub Docs](https://docs.github.com/)
 
-## ✅ Checklist Final
+## ✅ Checklist de Configuración
 
-- [ ] Repositorio creado en GitHub (público)
-- [ ] Código subido con `git push`
-- [ ] API funcionando en My JSON Server
-- [ ] Archivo `ejemplo.html` actualizado con tu usuario
+- [x] Repositorio creado en GitHub (público)
+- [x] Código subido con `git push`
+- [x] Archivos actualizados con usuario aarombrenner
+- [ ] API probada en My JSON Server (espera 1-2 minutos después del push)
+- [ ] Archivo `ejemplo.html` probado en el navegador
 - [ ] Probado al menos un DNI existente
 - [ ] Probado un DNI que no existe
 
-¡Listo! Tu API de clientes está funcionando. 🎉
+## 🔄 Próximos Pasos
+
+1. **Espera 1-2 minutos** para que My JSON Server indexe tu repositorio
+2. **Prueba la API** en tu navegador con la URL de arriba
+3. **Abre `ejemplo.html`** en tu navegador para probar la aplicación
+4. **Haz commit y push** de estos cambios actualizados:
+   ```bash
+   git add .
+   git commit -m "Actualizar archivos con usuario aarombrenner"
+   git push
+   ```
+
+¡Tu API de clientes está lista para usar! 🎉

@@ -7,36 +7,34 @@ Este proyecto contiene una API REST falsa para consultar información de cliente
 Una vez que subas este repositorio a GitHub, tu API estará disponible en:
 
 ```
-https://my-json-server.typicode.com/TU_USUARIO/apis_estaticas
+https://my-json-server.typicode.com/aarombrenner/apis_estaticas
 ```
-
-**Reemplaza `TU_USUARIO` con tu nombre de usuario de GitHub.**
 
 ## 📋 Endpoints Disponibles
 
 ### 1. Obtener todos los clientes
 ```
-GET https://my-json-server.typicode.com/TU_USUARIO/apis_estaticas/clientes
+GET https://my-json-server.typicode.com/aarombrenner/apis_estaticas/clientes
 ```
 
 ### 2. Buscar cliente por DNI
 ```
-GET https://my-json-server.typicode.com/TU_USUARIO/apis_estaticas/clientes?dni=12345678
+GET https://my-json-server.typicode.com/aarombrenner/apis_estaticas/clientes?dni=12345678
 ```
 
 ### 3. Obtener cliente por ID
 ```
-GET https://my-json-server.typicode.com/TU_USUARIO/apis_estaticas/clientes/1
+GET https://my-json-server.typicode.com/aarombrenner/apis_estaticas/clientes/1
 ```
 
 ### 4. Buscar por nombre
 ```
-GET https://my-json-server.typicode.com/TU_USUARIO/apis_estaticas/clientes?nombre=Juan
+GET https://my-json-server.typicode.com/aarombrenner/apis_estaticas/clientes?nombre=Juan
 ```
 
 ### 5. Buscar por apellido
 ```
-GET https://my-json-server.typicode.com/TU_USUARIO/apis_estaticas/clientes?apellido=Pérez
+GET https://my-json-server.typicode.com/aarombrenner/apis_estaticas/clientes?apellido=Pérez
 ```
 
 ## 🔍 Ejemplos de Uso
@@ -47,7 +45,7 @@ GET https://my-json-server.typicode.com/TU_USUARIO/apis_estaticas/clientes?apell
 // Validar si un DNI existe
 async function validarCliente(dni) {
   const response = await fetch(
-    `https://my-json-server.typicode.com/TU_USUARIO/apis_estaticas/clientes?dni=${dni}`
+    `https://my-json-server.typicode.com/aarombrenner/apis_estaticas/clientes?dni=${dni}`
   );
   const clientes = await response.json();
   
@@ -68,10 +66,10 @@ validarCliente('12345678');
 
 ```bash
 # Buscar por DNI
-curl "https://my-json-server.typicode.com/TU_USUARIO/apis_estaticas/clientes?dni=12345678"
+curl "https://my-json-server.typicode.com/aarombrenner/apis_estaticas/clientes?dni=12345678"
 
 # Obtener todos los clientes
-curl "https://my-json-server.typicode.com/TU_USUARIO/apis_estaticas/clientes"
+curl "https://my-json-server.typicode.com/aarombrenner/apis_estaticas/clientes"
 ```
 
 ### Python
@@ -80,7 +78,7 @@ curl "https://my-json-server.typicode.com/TU_USUARIO/apis_estaticas/clientes"
 import requests
 
 def validar_cliente(dni):
-    url = f"https://my-json-server.typicode.com/TU_USUARIO/apis_estaticas/clientes?dni={dni}"
+    url = f"https://my-json-server.typicode.com/aarombrenner/apis_estaticas/clientes?dni={dni}"
     response = requests.get(url)
     clientes = response.json()
     
@@ -147,14 +145,14 @@ El archivo `db.json` incluye 10 clientes de ejemplo con los siguientes DNIs:
 
 4. **Conectar y subir**:
    ```bash
-   git remote add origin https://github.com/TU_USUARIO/apis_estaticas.git
+   git remote add origin https://github.com/aarombrenner/apis_estaticas.git
    git branch -M main
    git push -u origin main
    ```
 
 5. **Probar tu API**:
    - Espera 1-2 minutos
-   - Accede a: `https://my-json-server.typicode.com/TU_USUARIO/apis_estaticas/clientes`
+   - Accede a: `https://my-json-server.typicode.com/aarombrenner/apis_estaticas/clientes`
 
 ## ⚙️ Características de My JSON Server
 
