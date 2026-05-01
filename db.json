@@ -1,0 +1,94 @@
+{
+  "clientes": [
+    {
+      "id": 1,
+      "dni": "12345678",
+      "nombre": "Juan",
+      "apellido": "Pérez García",
+      "email": "juan.perez@example.com",
+      "celular": "987654321",
+      "direccion": "Av. Arequipa 1234, Lima"
+    },
+    {
+      "id": 2,
+      "dni": "87654321",
+      "nombre": "María",
+      "apellido": "López Torres",
+      "email": "maria.lopez@example.com",
+      "celular": "912345678",
+      "direccion": "Jr. Cusco 567, Lima"
+    },
+    {
+      "id": 3,
+      "dni": "45678912",
+      "nombre": "Carlos",
+      "apellido": "Rodríguez Sánchez",
+      "email": "carlos.rodriguez@example.com",
+      "celular": "998877665",
+      "direccion": "Av. Javier Prado 890, San Isidro"
+    },
+    {
+      "id": 4,
+      "dni": "78912345",
+      "nombre": "Ana",
+      "apellido": "Martínez Flores",
+      "email": "ana.martinez@example.com",
+      "celular": "955443322",
+      "direccion": "Calle Los Olivos 234, Miraflores"
+    },
+    {
+      "id": 5,
+      "dni": "32165498",
+      "nombre": "Luis",
+      "apellido": "Fernández Díaz",
+      "email": "luis.fernandez@example.com",
+      "celular": "966554433",
+      "direccion": "Av. La Marina 456, San Miguel"
+    },
+    {
+      "id": 6,
+      "dni": "65498732",
+      "nombre": "Patricia",
+      "apellido": "Gómez Ruiz",
+      "email": "patricia.gomez@example.com",
+      "celular": "977665544",
+      "direccion": "Jr. Tacna 789, Cercado de Lima"
+    },
+    {
+      "id": 7,
+      "dni": "98765432",
+      "nombre": "Roberto",
+      "apellido": "Silva Vargas",
+      "email": "roberto.silva@example.com",
+      "celular": "988776655",
+      "direccion": "Av. Universitaria 321, Los Olivos"
+    },
+    {
+      "id": 8,
+      "dni": "15975348",
+      "nombre": "Carmen",
+      "apellido": "Ramos Castro",
+      "email": "carmen.ramos@example.com",
+      "celular": "944332211",
+      "direccion": "Calle Las Flores 654, Surco"
+    },
+    {
+      "id": 9,
+      "dni": "75315928",
+      "nombre": "Jorge",
+      "apellido": "Mendoza Quispe",
+      "email": "jorge.mendoza@example.com",
+      "celular": "933221100",
+      "direccion": "Av. Benavides 987, Miraflores"
+    },
+    {
+      "id": 10,
+      "dni": "35795124",
+      "nombre": "Rosa",
+      "apellido": "Huamán Pérez",
+      "email": "rosa.huaman@example.com",
+      "celular": "922110099",
+      "direccion": "Jr. Huancayo 147, Breña"
+    }
+  ]
+}
